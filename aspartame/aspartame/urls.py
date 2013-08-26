@@ -5,13 +5,8 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
     url(r'^$', 'aspartame.views.home', name='home'),
-    # url(r'^aspartame/', include('aspartame.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^redirect/index/$', 'aspartame.views.redirect_container', name='redirect_container'),
+    url(r'^redirect/$', 'aspartame.views.redirect', name='redirect'),
+    url(r'^redirect/(?P<id>[\w-]+)/$', 'aspartame.views.redirect', name='redirect'),
 )

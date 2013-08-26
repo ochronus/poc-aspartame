@@ -1,4 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponsePermanentRedirect
+from django.shortcuts import render
+from django.template import RequestContext, loader
 from django.utils import simplejson
 import uuid
 
@@ -39,3 +41,14 @@ def home(request):
     response['ETag'] = etag
     response['Cache-Control'] = 'Cache-Control:private, must-revalidate, proxy-revalidate'
     return response
+
+def redirect(request, id=None):
+    if id is None:
+        response = HttpResponsePermanentRedirect("/redirect/{id}/".format(id=uuid.uuid4()))
+    else:
+        response = render(request, "id_writer.html", {'id': id})
+
+    return response
+
+def redirect_container(request):
+    return render(request, "redirect_tracking.html")
