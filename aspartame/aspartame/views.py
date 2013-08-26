@@ -48,6 +48,10 @@ def redirect(request, id=None):
     else:
         response = render(request, "id_writer.html", {'id': id})
 
+    response['Pragma'] = 'public'
+    response['Cache-Control'] = 'max-age=315360000'
+    response['Expires'] = "Thu, 24 Aug 2023 11:36:38 GMT"
+
     return response
 
 def redirect_container(request):
