@@ -29,3 +29,6 @@ nosetests.xml
 # Translations
 *.mo
 
+venv
+
+aspartame/sessions
